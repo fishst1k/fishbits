@@ -4,6 +4,12 @@ resource "aws_lightsail_instance" "fishbits_wordpress" {
   ip_address_type   = var.lightsail_ip_address_type
   blueprint_id      = var.lightsail_blueprint
   bundle_id         = var.lightsail_bundle_id
+
+  add_on {
+    type = "AutoSnapshot"
+    snapshot_time = "06:00"
+    status = "Enabled"
+  }
 }
 
 resource "aws_lightsail_static_ip_attachment" "fishbits_static_ip_attachment" {
