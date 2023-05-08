@@ -1,18 +1,3 @@
-variable "environment" {
-  type        = string
-  description = "Unique name for your AWS environment (ie. dev)"
-}
-
-variable "user_role_arn" {
-  type        = string
-  description = "The user_role_arn of the account being used by terraform"
-}
-
-variable "bucket_name" {
-  type        = string
-  description = "The name of the bucket. Must be unique."
-}
-
 variable "lightsail_instance_name" {
   type        = string
   description = "Name of the lightsail instance"

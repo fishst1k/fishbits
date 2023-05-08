@@ -1,4 +1,4 @@
-resource "aws_lightsail_instance" "fishbits_wordpress" {
+resource "aws_lightsail_instance" "lightsail" {
   name              = var.lightsail_instance_name
   availability_zone = var.lightsail_availability_zone
   ip_address_type   = var.lightsail_ip_address_type
@@ -12,11 +12,11 @@ resource "aws_lightsail_instance" "fishbits_wordpress" {
   }
 }
 
-resource "aws_lightsail_static_ip_attachment" "fishbits_static_ip_attachment" {
-  static_ip_name = aws_lightsail_static_ip.fishbits_static_ip.id
-  instance_name  = aws_lightsail_instance.fishbits_wordpress.id
+resource "aws_lightsail_static_ip_attachment" "lightsail" {
+  static_ip_name = aws_lightsail_static_ip.lightsail.id
+  instance_name  = aws_lightsail_instance.lightsail.id
 }
 
-resource "aws_lightsail_static_ip" "fishbits_static_ip" {
+resource "aws_lightsail_static_ip" "lightsail" {
   name = var.lightsail_static_ip_name
 }
