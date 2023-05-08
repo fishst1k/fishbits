@@ -39,14 +39,12 @@ module "lightsail" {
 
 module "s3_bucket_tfstate" {
   source = "./modules/s3"
+  for_each = {for each in var.buckets: each.name => each}
 
-  bucket_name = var.bucket_name
-  user_role_arn = var.user_role_arn
+  bucket_name = each.value.name
+  user_role_arn = each.value.user_role_arn
 
-  tags = {
-    Name        = var.bucket_name
-    Environment = var.environment
-  }
+  tags = each.value.tags
 }
 
 module "route53" {

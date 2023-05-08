@@ -3,16 +3,6 @@ variable "environment" {
   description = "Unique name for your AWS environment (ie. dev)"
 }
 
-variable "user_role_arn" {
-  type        = string
-  description = "The user_role_arn of the account being used by terraform"
-}
-
-variable "bucket_name" {
-  type        = string
-  description = "The name of the bucket. Must be unique."
-}
-
 variable "lightsail_instance_name" {
   type        = string
   description = "Name of the lightsail instance"
@@ -47,4 +37,14 @@ variable "lightsail_bundle_id" {
 variable "lightsail_static_ip_name" {
   type        = string
   description = "Unique name for the lightsail static ip resource"
+}
+
+variable "buckets" {
+  type = list(object({
+    name = string
+    user_role_arn = string
+    tags = map(string)
+  }))
+  description = "List of S3 buckets."
+  default = []
 }
