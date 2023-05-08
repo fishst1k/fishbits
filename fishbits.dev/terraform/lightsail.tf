@@ -6,9 +6,9 @@ resource "aws_lightsail_instance" "fishbits_wordpress" {
   bundle_id         = var.lightsail_bundle_id
 
   add_on {
-    type = "AutoSnapshot"
+    type          = "AutoSnapshot"
     snapshot_time = "06:00"
-    status = "Enabled"
+    status        = "Enabled"
   }
 }
 
