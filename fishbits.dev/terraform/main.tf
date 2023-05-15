@@ -51,6 +51,8 @@ module "s3_bucket_tfstate" {
 
 module "route53" {
   source = "./modules/route53"
+  providers = { aws = aws.useast1 }
+
   zone_name = "fishbits.dev"
 
   records = [
