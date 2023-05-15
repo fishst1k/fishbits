@@ -1,12 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "4.64.0"
-    }
-  }
-}
-
 resource "aws_route53_zone" "route53" {
   name = var.zone_name
 }

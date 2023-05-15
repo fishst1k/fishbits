@@ -12,12 +12,6 @@ provider "aws" {
   region = "us-west-2"
 }
 
-# Configure an alias provider for Route53
-provider "aws" {
-  region = "us-east-1"
-  alias  = "useast1"
-}
-
 terraform {
   backend "s3" {
     bucket = "fishbits-terraform-state"
@@ -51,8 +45,6 @@ module "s3_bucket_tfstate" {
 
 module "route53" {
   source = "./modules/route53"
-  providers = { aws = aws.useast1 }
-
   zone_name = "fishbits.dev"
 
   records = [
